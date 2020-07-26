@@ -22,6 +22,19 @@ Please make sure to update tests as appropriate.
 
 ## Development
 
+-   Fork this repository in GitHub
+-   Clone your fork
+-   Run `npm install` to install dependencies
+-   Run `npm run serve` to run
+
+### Recomended Software
+
+-   [Visual Studio Code](https://code.visualstudio.com/download) for editing
+-   [MongoDB](https://www.mongodb.com/try/download/community) for the database
+-   [Postman](https://www.postman.com/downloads/) for emulating API calls
+
+### NPM
+
 `npm run serve` to run both client & server project concurrently
 
 `npm run build` to build both client & server project to out/
