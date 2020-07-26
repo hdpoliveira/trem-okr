@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 
 import * as home from "./routes/home";
+import * as messages from "./routes/messagesApi";
 
 dotenv.config();
 
@@ -17,7 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.get("/", home.index);
+app.get("/", home.get);
+app.get("/api/messages", messages.get);
+app.post("/api/messages", messages.post);
 
 app.listen(app.get("port"), () => {
     console.log(
