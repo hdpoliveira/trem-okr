@@ -24,7 +24,7 @@ export function getAll(): Promise<Message[]> {
 }
 
 export function add(message: Message): Promise<any> {
-    const result = Joi.validate(message, schema);
+    const result = schema.validate(message);
     if (!result.error) {
         message.createdAt = new Date();
         return messages.insert(message);
