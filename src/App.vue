@@ -1,61 +1,57 @@
 <template>
-    <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <router-link class="navbar-brand" to="/">Trem OKR</router-link>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarColor01"
-                aria-controls="navbarColor01"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <v-app>
+        <v-app-bar app color="primary" dark>
+            <div class="d-flex align-center">
+                <v-img
+                    alt="Vuetify Logo"
+                    class="shrink mr-2"
+                    contain
+                    src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+                    transition="scale-transition"
+                    width="40"
+                />
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <router-link class="nav-link" to="/">Home</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/about"
-                            >About</router-link
-                        >
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input
-                        class="form-control mr-sm-2"
-                        type="text"
-                        placeholder="Search"
-                    />
-                    <button
-                        class="btn btn-secondary my-2 my-sm-0"
-                        type="submit"
-                    >
-                        Search
-                    </button>
-                </form>
+                <v-img
+                    alt="Vuetify Name"
+                    class="shrink mt-1 hidden-sm-and-down"
+                    contain
+                    min-width="100"
+                    src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+                    width="100"
+                />
             </div>
-        </nav>
-        <router-view />
-    </div>
+
+            <v-spacer></v-spacer>
+
+            <v-btn
+                href="https://github.com/vuetifyjs/vuetify/releases/latest"
+                target="_blank"
+                text
+            >
+                <span class="mr-2">Latest Release</span>
+                <v-icon>mdi-open-in-new</v-icon>
+            </v-btn>
+        </v-app-bar>
+
+        <v-main>
+            <HelloWorld />
+        </v-main>
+    </v-app>
 </template>
 
-<style lang="scss">
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-</style>
+<script lang="ts">
+import Vue from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
+
+export default Vue.extend({
+    name: "App",
+
+    components: {
+        HelloWorld,
+    },
+
+    data: () => ({
+        //
+    }),
+});
+</script>
