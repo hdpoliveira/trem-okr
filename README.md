@@ -39,18 +39,18 @@ Please make sure to update tests as appropriate.
 -   [Visual Studio Code](https://code.visualstudio.com/download) for editing
 -   [Postman](https://www.postman.com/downloads/) for emulating API calls
 
-### NPM
+### NPM Scripts
 
-`npm run serve` to run both client & server project concurrently
+-   `npm run serve` to run both client & server project concurrently
 
-`npm run build` to build both client & server project to out/
+-   `npm run build` to build both client & server project to out/
 
 #### If you want to run server & client separately
 
-`npm run dev:client` to run client project.
+-   `npm run dev:client` to run client project.
 
-`npm run dev:server` to run server project.
+-   `npm run dev:server` to run server project.
 
-`npm run build:client` to build client project.
+-   `npm run build:client` to build client project.
 
-`npm run build:server` to build server project.
+-   `npm run build:server` to build server project.
