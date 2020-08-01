@@ -34,7 +34,7 @@ Please make sure to update tests as appropriate.
 -   Run `npm install` to install dependencies
 -   Run `npm run serve` to run
 
-### Recomended Software
+### Recommended Software
 
 -   [Visual Studio Code](https://code.visualstudio.com/download) for editing
 -   [Postman](https://www.postman.com/downloads/) for emulating API calls
