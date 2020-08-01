@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 
 import * as home from "./routes/home";
 import * as messages from "./routes/messagesApi";
+import * as okrs from "./routes/okrsApi";
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", home.get);
 app.get("/api/messages", messages.get);
 app.post("/api/messages", messages.post);
+app.get("/api/okrs", okrs.get);
+app.post("/api/okrs", okrs.post);
 
 app.listen(app.get("port"), () => {
     console.log(
