@@ -22,6 +22,13 @@ Please make sure to update tests as appropriate.
 
 ## Development
 
+### Required Software
+
+-   [NodeJS](https://nodejs.org/en/download)
+-   [MongoDB](https://www.mongodb.com/try/download/community) for the database
+
+### Instructions
+
 -   Fork this repository in GitHub
 -   Clone your fork
 -   Run `npm install` to install dependencies
@@ -30,7 +37,6 @@ Please make sure to update tests as appropriate.
 ### Recomended Software
 
 -   [Visual Studio Code](https://code.visualstudio.com/download) for editing
--   [MongoDB](https://www.mongodb.com/try/download/community) for the database
 -   [Postman](https://www.postman.com/downloads/) for emulating API calls
 
 ### NPM
