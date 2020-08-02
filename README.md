@@ -41,7 +41,7 @@ Please make sure to update tests as appropriate.
 
 ### NPM Scripts
 
--   `npm run serve` to run both client & server project concurrently
+-   `npm run dev` to run both client & server project concurrently
 
 -   `npm run build` to build both client & server project to out/
 
