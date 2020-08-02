@@ -207,15 +207,33 @@ export default Vue.extend({
             }
             const name = prompt("type something");
             const id = this.nextId++;
-            item.children.push(
-                JSON.stringify({
-                    id,
-                    name,
-                })
-            );
+            item.children.push({
+                id,
+                name,
+            });
         },
         removeChild(item: { id: number; name: string; children: string[] }) {
-            // do nothing
+            console.log(item);
+            if (confirm("Are you sure?")) {
+                const findParentOf = function (
+                    id: number,
+                    node: {}
+                ): { parentNode: {}; childIdx: number } {
+                    for (const childIdx in node.children) {
+                        if (node.children[childIdx].id == id) {
+                            return { parentNode: node, childIdx: childIdx };
+                        }
+                        const p = findParentOf(id, node.children[childIdx]);
+                        if (p.childIdx != -1) {
+                            return p;
+                        }
+                    }
+                    return { parentNode: {}, childIdx: -1 };
+                };
+                const root = { id: -1, children: this.items };
+                const p = findParentOf(item.id, root);
+                p.parentNode.children.splice(p.childIdx, 1);
+            }
         },
     },
 });
