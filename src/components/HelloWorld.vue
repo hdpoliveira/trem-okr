@@ -89,6 +89,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import TaskModel from "@/models/TaskModel";
 
 export default Vue.extend({
     name: "HelloWorld",
@@ -196,43 +197,50 @@ export default Vue.extend({
     }),
 
     methods: {
-        addChild(item: {
-            id: string;
-            name: string | null;
-            children: string[];
-        }) {
-            console.log(item);
+        addChild(item: TaskModel) {
             if (!item.children) {
                 this.$set(item, "children", []);
             }
             const name = prompt("type something");
             const id = this.nextId++;
-            item.children.push({
-                id,
-                name,
-            });
+            if (item.children)
+                item.children.push({
+                    id,
+                    name,
+                });
         },
         removeChild(item: { id: number; name: string; children: string[] }) {
-            console.log(item);
             if (confirm("Are you sure?")) {
                 const findParentOf = function (
                     id: number,
-                    node: {}
-                ): { parentNode: {}; childIdx: number } {
+                    node: TaskModel
+                ): {
+                    parentNode: TaskModel | null;
+                    childIdx: number;
+                } {
+                    if (node.children === undefined)
+                        return { parentNode: null, childIdx: -1 };
+
                     for (const childIdx in node.children) {
                         if (node.children[childIdx].id == id) {
-                            return { parentNode: node, childIdx: childIdx };
+                            // Why childIdx is a string?
+                            return {
+                                parentNode: node,
+                                childIdx: Number(childIdx),
+                            };
                         }
                         const p = findParentOf(id, node.children[childIdx]);
                         if (p.childIdx != -1) {
                             return p;
                         }
                     }
-                    return { parentNode: {}, childIdx: -1 };
+                    return { parentNode: null, childIdx: -1 };
                 };
-                const root = { id: -1, children: this.items };
+                const root = { id: -1, name: "", children: this.items };
                 const p = findParentOf(item.id, root);
-                p.parentNode.children.splice(p.childIdx, 1);
+                if (p && p.parentNode && p.parentNode.children) {
+                    p.parentNode.children.splice(p.childIdx, 1);
+                }
             }
         },
     },
