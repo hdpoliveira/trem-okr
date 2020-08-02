@@ -10,6 +10,10 @@
                 </v-btn>
             </template>
         </v-treeview>
+        <v-btn block @click="addNewRootItem()">
+            <v-icon>mdi-plus</v-icon>
+            Add new Task
+        </v-btn>
         <v-row class="text-center">
             <v-col cols="12">
                 <v-img
@@ -201,6 +205,14 @@ export default Vue.extend({
     }),
 
     methods: {
+        addNewRootItem() {
+            const name = prompt("type something");
+            const id = this.nextId++;
+            this.$data.items.push({
+                id,
+                name,
+            });
+        },
         addChild(item: TaskModel) {
             if (!item.children) {
                 this.$set(item, "children", []);
