@@ -207,12 +207,10 @@ export default Vue.extend({
             }
             const name = prompt("type something");
             const id = this.nextId++;
-            item.children.push(
-                JSON.stringify({
-                    id,
-                    name,
-                })
-            );
+            item.children.push({
+                id,
+                name,
+            });
         },
         removeChild(item: { id: number; name: string; children: string[] }) {
             // do nothing
