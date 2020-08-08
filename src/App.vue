@@ -9,20 +9,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "./components/HelloWorld.vue";
 import AppBar from "./components/AppBar.vue";
 
-export default Vue.extend({
-    name: "App",
-
+@Component({
     components: {
         AppBar,
         HelloWorld,
     },
-
-    data: () => ({
-        //
-    }),
-});
+})
+export default class App extends Vue {}
 </script>
