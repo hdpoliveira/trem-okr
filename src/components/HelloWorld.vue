@@ -90,6 +90,12 @@
 <script lang="ts">
 import Vue from "vue";
 
+interface Task {
+    id: number;
+    name: string | null;
+    children: Task[];
+}
+
 export default Vue.extend({
     name: "HelloWorld",
 
@@ -196,11 +202,7 @@ export default Vue.extend({
     }),
 
     methods: {
-        addChild(item: {
-            id: string;
-            name: string | null;
-            children: string[];
-        }) {
+        addChild(item: Task) {
             console.log(item);
             if (!item.children) {
                 this.$set(item, "children", []);
@@ -210,6 +212,7 @@ export default Vue.extend({
             item.children.push({
                 id,
                 name,
+                children: [],
             });
         },
         removeChild(item: { id: number; name: string; children: string[] }) {
@@ -217,22 +220,30 @@ export default Vue.extend({
             if (confirm("Are you sure?")) {
                 const findParentOf = function (
                     id: number,
-                    node: {}
-                ): { parentNode: {}; childIdx: number } {
+                    node: Task
+                ): { parentNode: Task; childIdx: number } | undefined {
                     for (const childIdx in node.children) {
-                        if (node.children[childIdx].id == id) {
-                            return { parentNode: node, childIdx: childIdx };
+                        const child = node.children[childIdx];
+                        if (child.id == id) {
+                            return {
+                                parentNode: node,
+                                childIdx: parseInt(childIdx),
+                            };
                         }
-                        const p = findParentOf(id, node.children[childIdx]);
-                        if (p.childIdx != -1) {
+                        const p = findParentOf(id, child);
+                        if (p) {
                             return p;
                         }
                     }
-                    return { parentNode: {}, childIdx: -1 };
+                    return undefined;
                 };
-                const root = { id: -1, children: this.items };
+                const root = {
+                    id: -1,
+                    name: null,
+                    children: this.items,
+                } as Task;
                 const p = findParentOf(item.id, root);
-                p.parentNode.children.splice(p.childIdx, 1);
+                p?.parentNode.children.splice(p.childIdx, 1);
             }
         },
     },
