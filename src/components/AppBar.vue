@@ -12,7 +12,7 @@
             class="shrink mt-1 hidden-sm-and-down"
             contain
             min-width="40"
-            src="@/assets/logo.png"
+            :src="logo"
             width="40"
         />
         <v-btn icon large @click="toggleTheme"
@@ -31,6 +31,11 @@ export default class AppBar extends Vue {
     }
     toggleTheme() {
         this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    }
+    private darkLogo = require("@/assets/logo-dark.png");
+    private lightLogo = require("@/assets/logo-light.png");
+    get logo() {
+        return this.$vuetify.theme.dark ? this.darkLogo : this.lightLogo;
     }
 }
 </script>
