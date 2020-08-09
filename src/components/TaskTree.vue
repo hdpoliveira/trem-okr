@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-treeview :items="items">
-            <template slot="append" slot-scope="{ item }">
+            <template v-slot:append="{ item }">
                 <v-btn @click="addChild(item)" small
                     ><v-icon>mdi-text-box-plus-outline</v-icon></v-btn
                 >
