@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-treeview :items="items">
+        <v-treeview :items="items" hoverable dense>
             <template v-slot:append="{ item }">
                 <v-btn @click="addChild(item)" small
                     ><v-icon>mdi-text-box-plus-outline</v-icon></v-btn
