@@ -1,20 +1,18 @@
 <template>
     <v-navigation-drawer v-model="drawer" app clipped>
         <v-list dense>
-            <v-list-item link>
+            <v-list-item
+                link
+                v-for="link in links"
+                :key="link.text"
+                router
+                :to="link.route"
+            >
                 <v-list-item-action>
-                    <v-icon>mdi-home</v-icon>
+                    <v-icon>{{ link.icon }}</v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
-                    <v-list-item-title>Home</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link>
-                <v-list-item-action>
-                    <v-icon>mdi-sign-text</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>About</v-list-item-title>
+                    <v-list-item-title>{{ link.text }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
         </v-list>
@@ -34,5 +32,9 @@ export default class NavigationMenu extends Vue {
     set drawer(value: boolean) {
         this.$store.dispatch("setDrawer", value);
     }
+    private links = [
+        { icon: "mdi-home", text: "Home", route: "/" },
+        { icon: "mdi-sign-text", text: "About", route: "/about" },
+    ];
 }
 </script>
