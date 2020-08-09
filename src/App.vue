@@ -1,8 +1,8 @@
 <template>
     <v-app>
-        <NavigationMenu v-bind="drawer" />
+        <NavigationMenu />
 
-        <AppBar v-bind="drawer" />
+        <AppBar />
 
         <v-main>
             <router-view></router-view>
@@ -14,12 +14,14 @@
 import { Component, Vue } from "vue-property-decorator";
 import AppBar from "./components/AppBar.vue";
 import NavigationMenu from "./components/NavigationMenu.vue";
+import store from "./store";
 
 @Component({
     components: {
         AppBar,
         NavigationMenu,
     },
+    store,
 })
 export default class App extends Vue {}
 </script>

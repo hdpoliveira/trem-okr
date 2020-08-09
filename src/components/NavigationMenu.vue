@@ -22,12 +22,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 // TODO make the menu change the route
 
 @Component
 export default class NavigationMenu extends Vue {
-    @Prop({ required: true }) readonly drawer!: boolean;
+    get drawer(): boolean {
+        return this.$store.state.drawer;
+    }
+    set drawer(value: boolean) {
+        this.$store.dispatch("setDrawer", value);
+    }
 }
 </script>

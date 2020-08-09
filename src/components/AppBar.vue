@@ -1,6 +1,6 @@
 <template>
     <v-app-bar app clipped-left>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
 
         <v-spacer></v-spacer>
 
@@ -19,13 +19,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-
-// TODO make changing the drawer affect the navigation menu
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class AppBar extends Vue {
-    @Prop({ required: true }) readonly drawer!: boolean;
+    toggleDrawer() {
+        this.$store.dispatch("toggleDrawer");
+    }
 }
 </script>
 
