@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <img alt="Trem logo" src="../assets/logo.png" />
+        <img alt="Trem logo" src="@/assets/logo.svg" />
         <TaskTree />
     </div>
 </template>
