@@ -1,17 +1,17 @@
 <template>
     <div class="home">
         <img alt="Trem logo" src="../assets/logo.png" />
-        <HelloWorld msg="Welcome to Your Vue.js App" />
+        <TaskTree />
     </div>
 </template>
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue";
+import TaskTree from "@/components/TaskTree.vue";
 
 @Component({
     components: {
-        HelloWorld,
+        TaskTree,
     },
 })
 export default class Home extends Vue {}

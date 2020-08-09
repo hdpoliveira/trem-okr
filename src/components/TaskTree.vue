@@ -19,7 +19,7 @@ interface Task {
 }
 
 @Component
-export default class HelloWorld extends Vue {
+export default class TaskTree extends Vue {
     private items = [
         {
             id: 1,
