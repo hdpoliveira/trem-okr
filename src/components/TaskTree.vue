@@ -2,12 +2,22 @@
     <v-container>
         <v-treeview :items="items" hoverable dense>
             <template v-slot:append="{ item }">
-                <v-btn @click="addChild(item)" small
-                    ><v-icon>mdi-text-box-plus-outline</v-icon></v-btn
-                >
-                <v-btn @click="removeChild(item)" small
-                    ><v-icon>mdi-trash-can-outline</v-icon></v-btn
-                >
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn icon large v-on="on" @click="addChild(item)"
+                            ><v-icon>mdi-text-box-plus-outline</v-icon></v-btn
+                        >
+                    </template>
+                    <span>Add task</span>
+                </v-tooltip>
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-btn icon large v-on="on" @click="removeChild(item)"
+                            ><v-icon>mdi-trash-can-outline</v-icon></v-btn
+                        >
+                    </template>
+                    <span>Remove task</span>
+                </v-tooltip>
             </template>
         </v-treeview>
     </v-container>
