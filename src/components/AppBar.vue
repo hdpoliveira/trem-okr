@@ -15,6 +15,9 @@
             src="@/assets/logo.png"
             width="40"
         />
+        <v-btn icon large @click="toggleTheme"
+            ><v-icon>mdi-theme-light-dark</v-icon></v-btn
+        >
     </v-app-bar>
 </template>
 
@@ -25,6 +28,9 @@ import { Component, Vue } from "vue-property-decorator";
 export default class AppBar extends Vue {
     toggleDrawer() {
         this.$store.dispatch("toggleDrawer");
+    }
+    toggleTheme() {
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     }
 }
 </script>
