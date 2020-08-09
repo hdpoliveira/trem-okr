@@ -2,8 +2,12 @@
     <v-container>
         <v-treeview :items="items">
             <template slot="append" slot-scope="{ item }">
-                <v-btn @click="addChild(item)">Add item</v-btn>
-                <v-btn @click="removeChild(item)">Remove this item</v-btn>
+                <v-btn @click="addChild(item)" small
+                    ><v-icon>mdi-text-box-plus-outline</v-icon></v-btn
+                >
+                <v-btn @click="removeChild(item)" small
+                    ><v-icon>mdi-trash-can-outline</v-icon></v-btn
+                >
             </template>
         </v-treeview>
     </v-container>
