@@ -1,6 +1,18 @@
 <template>
     <v-container>
         <v-treeview :items="items" hoverable dense>
+            <template v-slot:label="{ item }">
+                <v-text-field
+                    :value="item.name"
+                    single-line
+                    solo
+                    hide-details
+                    dense
+                    @keydown.enter="enter(item, $event.target.value)"
+                    @keydown.esc="esc(item, $event.target.value)"
+                    @blur="blur(item, $event.target.value)"
+                ></v-text-field>
+            </template>
             <template v-slot:append="{ item }">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
@@ -36,6 +48,24 @@ interface Task {
 export default class TaskTree extends Vue {
     get items(): boolean {
         return this.$store.state.tasks.items;
+    }
+
+    private blur(item: Task, value: string) {
+        console.log("blur");
+        console.log(item);
+        console.log(value);
+    }
+
+    private enter(item: Task, value: string) {
+        console.log("enter");
+        console.log(item);
+        console.log(value);
+    }
+
+    private esc(item: Task, value: string) {
+        console.log("esc");
+        console.log(item);
+        console.log(value);
     }
 
     private addChild(item: Task) {
